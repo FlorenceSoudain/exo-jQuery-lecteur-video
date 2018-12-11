@@ -24,3 +24,25 @@ function update(video) {
 
 }
 
+$('#vitesse').on('input', function () {
+    video.playbackRate = this.value;
+});
+
+$('#vol').on('input', function () {
+    video.volume = this.value;
+});
+
+$('#moins').click(function () {
+    intervalRewind = setTimeout(function(){
+        video.playbackRate = 1.0;
+        if(video.currentTime === 0){
+            clearTimeout(intervalRewind);
+            video.pause();
+        }
+        else{
+            video.currentTime += -10;
+        }
+    },30);
+});
+
+
